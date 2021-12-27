@@ -22,6 +22,10 @@ module.exports = {
           return `rgb(var(--primary-color))`;
         },
       },
+      screens: {
+        "3xl": "1600px",
+        "4xl": "1921px",
+      },
       fontFamily: {
         body: ["Inter", "sans-serif"],
         system: [
