@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-color: "";
+    --secondary-color: "";
+    /* regular text colors */
+    --text-color: #252525;
+    --text-color-inverted: #fff;
+    --text-color-muted: #999999;
+  }
+}
