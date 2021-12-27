@@ -5,11 +5,17 @@
 
 @layer base {
   :root {
-    --primary-color: "";
-    --secondary-color: "";
+    --primary-color: 31, 64, 230;
+    --secondary-color: 31, 64, 230;
     /* regular text colors */
     --text-color: #252525;
     --text-color-inverted: #fff;
     --text-color-muted: #999999;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply flex items-center justify-center hover:bg-opacity-95 rounded-lg relative p-2 transition-colors duration-100;
   }
 }
