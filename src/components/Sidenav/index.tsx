@@ -27,7 +27,7 @@ const Sidenav = () => {
       `4xl:h-[calc(100vh_-_94.41px)]`,
       {
         "w-64": expanded,
-        "w-20": !expanded,
+        "w-[5.5rem]": !expanded,
       }
     );
   }, [expanded]);

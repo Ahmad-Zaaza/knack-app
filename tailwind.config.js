@@ -21,6 +21,7 @@ module.exports = {
           }
           return `rgb(var(--primary-color))`;
         },
+        paper: `rgb(var(--paper-color))`,
       },
       screens: {
         "3xl": "1600px",
