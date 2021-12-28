@@ -10,12 +10,24 @@
     /* regular text colors */
     --text-color: #252525;
     --text-color-inverted: #fff;
-    --text-color-muted: #999999;
+    --text-color-muted: #7e7e7e;
   }
 }
 
 @layer components {
+  .paper {
+    @apply drop-shadow bg-white rounded-xl;
+  }
   .btn {
-    @apply flex items-center justify-center hover:bg-opacity-95 rounded-lg relative p-2 transition-colors duration-100;
+    @apply flex items-center space-x-1 justify-center hover:bg-opacity-95 rounded-lg relative p-2 transition-colors duration-100;
+  }
+  .d-card {
+    @apply rounded-xl  p-4 relative bg-primary overflow-hidden transition-colors duration-200  hover:bg-opacity-90 drop-shadow-lg before:absolute before:-right-14 before:-top-14 before:rounded-full before:hover:-right-16 before:hover:-top-16 before:transition-all before:duration-200 before:z-10 before:bg-white before:bg-opacity-10 before:w-[10em] before:h-[10em];
+  }
+  .g-card {
+    @apply transition-all duration-150 paper p-4 self-start flex flex-col min-h-[200px];
+  }
+  .prog-linear {
+    @apply w-full rounded-full h-3 bg-slate-200 overflow-hidden relative;
   }
 }

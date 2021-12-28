@@ -6,15 +6,16 @@ interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
-  ({ children, primary, size, ...props }, ref) => {
+  ({ children, primary, size, className, ...props }, ref) => {
     const buttonClasses = useMemo(() => {
       return clsx(
-        "btn",
+        "btn ",
         { "bg-primary text-inverted": primary },
         { "py-3 px-6": size === "large" },
-        { "py-1 px-3": size === "small" }
+        { "py-1 px-3 text-sm rounded": size === "small" },
+        className
       );
-    }, [primary, size]);
+    }, [className, primary, size]);
     return (
       <button className={buttonClasses} ref={ref} {...props}>
         {children}

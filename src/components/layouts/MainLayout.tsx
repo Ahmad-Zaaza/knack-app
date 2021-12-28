@@ -10,10 +10,10 @@ const MainLayout: React.FC = ({ children }) => {
         <title>Knack lab</title>
         <meta name="description" content="Knack lab homepage" />
       </Head>
-        <Navbar />
+      <Navbar />
       <div className="flex">
-          <Sidenav/>
-        <main className="p-4">{children}</main>
+        <Sidenav />
+        <main className="bg-gray-50 flex-1 px-6 py-4">{children}</main>
       </div>
     </div>
   );

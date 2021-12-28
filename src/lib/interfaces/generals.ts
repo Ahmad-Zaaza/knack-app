@@ -5,3 +5,15 @@ export type TSideNavItem = {
   href: string;
   Icon: IconType;
 };
+export type TDashboardSummary = {
+  title: string;
+  value: number;
+};
+
+export type TDevelopmentGoal = {
+  title: string;
+  description: string;
+  createdAt: string;
+  id: number;
+  progress: number;
+};
