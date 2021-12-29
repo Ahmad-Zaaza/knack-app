@@ -15,7 +15,7 @@ const dashboardSummaries: TDashboardSummary[] = [
 const DashboardSummary = () => {
   return (
     <div>
-      <ul className="flex space-x-4">
+      <ul className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:3xl:grid-cols-4 3xl:grid-cols-5  4xl:grid-cols-6 ">
         {dashboardSummaries.map((s) => (
           <DashboardSummaryCard key={s.title} summary={s} />
         ))}

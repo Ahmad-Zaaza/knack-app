@@ -11,7 +11,7 @@ const MainLayout: React.FC = ({ children }) => {
         <meta name="description" content="Knack lab homepage" />
       </Head>
       <Navbar />
-      <div className="flex">
+      <div className="md:flex">
         <Sidenav />
         <main className="bg-gray-50 flex-1 px-6 py-4">{children}</main>
       </div>

@@ -41,6 +41,6 @@ input:checked + div svg {
     @apply w-full rounded-full h-3 bg-slate-200 overflow-hidden relative;
   }
   .chip {
-    @apply rounded-3xl px-2 py-1 text-sm cursor-pointer hover:bg-opacity-80 transition-colors duration-150;
+    @apply rounded-3xl p-2 text-xs sm:text-sm cursor-pointer hover:bg-opacity-80 transition-colors duration-150;
   }
 }

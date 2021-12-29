@@ -11,4 +11,5 @@ export const INITIAL_STATE: IApplicationContextProps = {
       title: "Evaluate self",
     },
   ],
+  sideNavOpen: false,
 };

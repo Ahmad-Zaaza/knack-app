@@ -1,9 +1,14 @@
 import { useMemo, useState } from "react";
 import clsx from "classnames";
-import { RiDashboardFill, RiBarChartFill } from "react-icons/ri";
+import { RiDashboardFill } from "react-icons/ri";
 import SidenavItem from "./SidenavItem";
 import { TSideNavItem } from "@/lib/interfaces/generals";
 import SidenavExpandButton from "./SidenavExpandButton";
+import { useApplicationState } from "@/contexts/ApplicationContext";
+import { useMediaQuery } from "react-responsive";
+import logo from "@/assets/logo.png";
+import Link from "next/link";
+import Image from "next/image";
 
 const sidenavItems: TSideNavItem[] = [
   {
@@ -11,34 +16,47 @@ const sidenavItems: TSideNavItem[] = [
     href: "/",
     Icon: RiDashboardFill,
   },
-  {
-    title: "Reports",
-    href: "/",
-    Icon: RiBarChartFill,
-  },
+  // {
+  //   title: "Reports",
+  //   href: "/reports",
+  //   Icon: RiBarChartFill,
+  // },
 ];
 const Sidenav = () => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const isDesktop = useMediaQuery({ minWidth: 768 });
+  const [{ sideNavOpen }] = useApplicationState();
   const containerClasses = useMemo(() => {
-    return clsx(
-      "border-r relative",
-      "transition-all duration-300",
-      `h-[calc(100vh_-_74.41px)]`,
-      `4xl:h-[calc(100vh_-_94.41px)]`,
-      {
-        "w-64": expanded,
-        "w-[5.5rem]": !expanded,
-      }
-    );
-  }, [expanded]);
+    return clsx("transition-all duration-200 will-change-transform", {
+      "w-64": !collapsed,
+      "w-[5.5rem]": collapsed,
+      "-translate-x-full": !isDesktop && !sideNavOpen,
+      block: isDesktop,
+      "fixed top-0 bottom-0  paper z-10": !isDesktop,
+    });
+  }, [collapsed, isDesktop, sideNavOpen]);
   return (
     <aside className={containerClasses}>
-      <div className="overflow-hidden p-4">
-        {sidenavItems.map((item) => (
-          <SidenavItem key={item.title} item={item} expanded={expanded} />
-        ))}
+      <div className=" block md:hidden p-4">
+        <Link href="/">
+          <a className="max-h-[50px]">
+            <Image src={logo} layout="intrinsic" alt="Knack logo" />
+          </a>
+        </Link>
       </div>
-      <SidenavExpandButton expanded={expanded} setExpanded={setExpanded} />
+      <hr className="block md:hidden" />
+
+      <div className=" relative h-[calc(100vh_-_74.41px)] 4xl:h-[calc(100vh_-_94.41px)] border-r">
+        <div className="overflow-hidden space-y-2 p-4">
+          {sidenavItems.map((item) => (
+            <SidenavItem key={item.title} item={item} collapsed={collapsed} />
+          ))}
+        </div>
+        <SidenavExpandButton
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+        />
+      </div>
     </aside>
   );
 };

@@ -66,7 +66,7 @@ const NewGoalTasks = () => {
   return (
     <div>
       <NewGoalHeadline>Goal tasks</NewGoalHeadline>
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
         <div className="bg-paper rounded border">
           <div className="border-b px-2 py-3">
             <h6 className="text-center font-semibold">Added tasks</h6>

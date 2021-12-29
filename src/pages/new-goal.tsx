@@ -43,7 +43,7 @@ const NewGoal = () => {
 
       <hr className="my-4" />
       <FormProvider {...formMethods}>
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6">
           <form
             onSubmit={formMethods.handleSubmit(onSubmit)}
             id="new-goal"

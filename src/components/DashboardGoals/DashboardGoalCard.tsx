@@ -62,7 +62,7 @@ const DashboardGoalCard = ({ goal }: IDashboardGoalCardProps) => {
           <p className="text-xs">{goal.createdAt}</p>
         </div>
         <div className=" flex space-x-1">
-          <Button primary size="small">
+          <Button  onClick={() => setEditProgress(!editProgress)} primary size="small">
             Details
           </Button>
         </div>

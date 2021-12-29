@@ -9,11 +9,10 @@ interface IEditProgressProps {
 const EditProgress = ({ tasks, handleCheckTask }: IEditProgressProps) => {
   return (
     <div className="my-1">
-      <div className="flex">
+      <div className="my-1">
         <p className="font-semibold">Edit progress</p>
-        <input type="text" />
       </div>
-      <ul className="p-2 flex flex-col space-y-2  max-h-[350px] overflow-y-auto">
+      <ul className="py-2 flex flex-col space-y-2  max-h-[350px] overflow-y-auto">
         {tasks.length === 0 && (
           <div className="h-full flex-col space-y-3 flex justify-center items-center">
             <p>No Tasks added</p>

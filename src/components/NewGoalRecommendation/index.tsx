@@ -18,10 +18,10 @@ const NewGoalRecommendation = () => {
         Need some recommendations? try these out :
       </p>
 
-      <div className="flex space-x-3 mt-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3  3xl:grid-cols-5 gap-2 mt-4">
         {fields.map((f) => (
           <button
-          type='button'
+            type="button"
             onClick={() => handleSetObjective(f)}
             key={f}
             className="chip bg-orange-500 text-inverted"
