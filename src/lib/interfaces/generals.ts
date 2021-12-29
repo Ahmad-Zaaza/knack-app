@@ -15,9 +15,9 @@ export type TDevelopmentGoal = {
   description: string;
   createdAt: string;
   id: number;
-  progress: number;
   tasks: Array<{ checked: boolean } & TGoalTask>;
 };
 export type TGoalTask = {
+  id: number;
   title: string;
 };

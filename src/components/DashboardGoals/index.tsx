@@ -2,10 +2,10 @@ import Button from "../StyledComponents/Button";
 import { RiAddFill } from "react-icons/ri";
 import DashboardGoalCard from "./DashboardGoalCard";
 import Link from "next/link";
-import { useApplicationState } from "@/contexts/ApplicationContext";
+import useGetGoals from "@/hooks/queries/useGetGoals";
 
 const DashboardGoals = () => {
-  const [{ goals }] = useApplicationState();
+  const { data: goals } = useGetGoals();
   return (
     <div>
       <div className="flex justify-between space-x-2 mb-4">
@@ -20,7 +20,7 @@ const DashboardGoals = () => {
         </Link>
       </div>
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
-        {goals.map((g) => (
+        {goals?.map((g) => (
           <DashboardGoalCard key={g.id} goal={g} />
         ))}
       </div>

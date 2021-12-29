@@ -45,18 +45,24 @@ const NewGoalTasks = () => {
     setNewTaskValue("");
     setShowAddInput(false);
     if (newTaskValue) {
+      const randomId = Math.random();
       setState((prev) => ({
         ...prev,
-        initialTasks: [...prev.initialTasks, { title: newTaskValue }],
+        initialTasks: [
+          ...prev.initialTasks,
+          { id: randomId, title: newTaskValue },
+        ],
       }));
-      setAvailableTasks((prev) => [...prev, { title: newTaskValue }]);
+      setAvailableTasks((prev) => [
+        ...prev,
+        { id: randomId, title: newTaskValue },
+      ]);
     }
   };
   // 🔎 Filter available tasks based on search query.
   const handleSearchChange = (query: string) => {
     setQuery(query);
   };
-  console.log();
   return (
     <div>
       <NewGoalHeadline>Goal tasks</NewGoalHeadline>
@@ -70,7 +76,9 @@ const NewGoalTasks = () => {
               <div className="h-full flex-col space-y-3 flex justify-center items-center">
                 <p>No Tasks added</p>
                 {error && (
-                  <p className="text-red-500 text-sm">Please add atleast one task</p>
+                  <p className="text-red-500 text-sm">
+                    Please add atleast one task
+                  </p>
                 )}
               </div>
             )}
@@ -136,6 +144,7 @@ const NewGoalTasks = () => {
               </button>
               {showAddInput && (
                 <form
+                  id="task-add"
                   onSubmit={handleCreateTask}
                   className="mt-4 space-x-2 flex"
                 >
@@ -145,7 +154,12 @@ const NewGoalTasks = () => {
                     variant="small"
                     placeholder="eg: Read a book..."
                   />
-                  <Button size="small" className="border-primary border">
+                  <Button
+                  form="task-add"
+                    type="submit"
+                    size="small"
+                    className="border-primary border"
+                  >
                     Add
                   </Button>
                 </form>

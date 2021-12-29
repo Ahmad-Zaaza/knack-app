@@ -1,6 +1,5 @@
-import { TDevelopmentGoal, TGoalTask } from "./generals";
+import {  TGoalTask } from "./generals";
 
 export interface IApplicationContextProps {
-  goals: TDevelopmentGoal[];
   initialTasks: TGoalTask[];
 }

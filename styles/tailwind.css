@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+input:checked + div {
+  @apply border-blue-500;
+}
+input:checked + div svg {
+  @apply block;
+}
+
+
 @layer base {
   :root {
     --primary-color: 31, 64, 230;
@@ -30,5 +39,8 @@
   }
   .prog-linear {
     @apply w-full rounded-full h-3 bg-slate-200 overflow-hidden relative;
+  }
+  .chip {
+    @apply rounded-3xl px-2 py-1 text-sm cursor-pointer hover:bg-opacity-80 transition-colors duration-150;
   }
 }

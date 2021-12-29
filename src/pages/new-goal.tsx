@@ -2,42 +2,30 @@ import NewGoalTasks from "@/components/NewGoalTasks";
 import Button from "@/components/StyledComponents/Button";
 import Input from "@/components/StyledComponents/Input";
 import TextArea from "@/components/StyledComponents/Textarea";
-import { useApplicationState } from "@/contexts/ApplicationContext";
 import { INewGoal } from "@/lib/interfaces/NewGoal";
 import Link from "next/link";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { RiAddFill } from "react-icons/ri";
-import { format } from "date-fns";
+
 import NewGoalRecommendation from "@/components/NewGoalRecommendation";
 import { useRouter } from "next/router";
+import useCreateGoal from "@/hooks/mutations/useCreateGoal";
+import useGetGoals from "@/hooks/queries/useGetGoals";
+
 const NewGoal = () => {
-  const [_, setState] = useApplicationState();
   const { push } = useRouter();
+  const { mutateAsync } = useCreateGoal();
   const formMethods = useForm<INewGoal>({ defaultValues: { tasks: [] } });
-  const onSubmit: SubmitHandler<INewGoal> = (data) => {
+  useGetGoals(); // Just for test implementation.
+  const onSubmit: SubmitHandler<INewGoal> = async (data) => {
     try {
-      setState((prev) => ({
-        ...prev,
-        goals: [
-          ...prev.goals,
-          {
-            createdAt: format(new Date(), "dd/MM/yyyy"),
-            description: data.description,
-            id: Math.random(),
-            progress: 0,
-            tasks: data.tasks.map((t) => ({
-              ...t,
-              checked: false,
-            })),
-            title: data.title,
-          },
-        ],
-      }));
+      await mutateAsync({ ...data });
       push("/");
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <div>
       <Link href="/" passHref>
